@@ -1,0 +1,25 @@
+{% extends 'cuentas/main.html' %}
+{% block content %}
+{% include 'cuentas/status.html' %}
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Curso</th>
+					<th>Horario</th>
+					<th>Categoria</th>
+				</tr>
+				{% for cursando in cursando %}
+				<tr>
+				    <td>{{cursando.curso.name}}</td>
+				    <td>{{cursando.curso.horario}}</td>
+				    <td>{{cursando.curso.categoria}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}

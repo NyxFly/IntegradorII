@@ -1,0 +1,91 @@
+{% extends 'cuentas/main.html'%}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Alumno:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'crear_encurso' clientes.id %}">Establecer Aula</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'agregar_cursos' clientes.id %}">Establecer Cursos</a>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informacion de Contacto</h5>
+			<hr>
+			<p>Email:{{clientes.email}} </p>
+			<p>Phone:{{clientes.phone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total de Cursos</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{total_cursos}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Grado</th>
+					<th>Año</th>
+					<th>Seccion</th>
+					<th>Aula</th>
+					<th>Actualizar</th>
+					<th>Eliminar</th>
+				</tr>
+				{% for cursando in cursando %}
+				<tr>
+				    <td>{{cursando.aula.grado}}</td>
+					<td>{{cursando.aula.año}}</td>
+					<td>{{cursando.aula.seccion}}</td>
+					<td>{{cursando.aula.salon}}</td>
+				    <td><a class="btn btn-sm btn-info" href="">Actualizar</a></td>
+					<td><a class="btn btn-sm btn-danger" href="">Eliminar</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Curso</th>
+					<th>Horario</th>
+					<th>Categoria</th>
+					<th>Actualizar</th>
+					<th>Eliminar</th>
+				</tr>
+				{% for i in cursando %}
+				<tr>
+				    <td>{{i.curso.name}}</td>
+					<td>{{i.curso.horario}}</td>
+					<td>{{i.curso.categoria}}</td>
+				    <td><a class="btn btn-sm btn-info" href="">Actualizar</a></td>
+					<td><a class="btn btn-sm btn-danger" href="">Eliminar</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
