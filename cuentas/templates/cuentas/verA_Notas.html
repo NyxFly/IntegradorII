@@ -1,0 +1,20 @@
+{% extends 'cuentas/main.html' %}
+{% block content %}
+
+
+
+<table class="table table-sm">
+    <tr>
+        <th>Trimestre</th>
+        <th>Calificacion</th>
+    </tr>
+    {%for notas in notas %}
+    <tr>
+        <td>{{notas.trimeste}}</td>
+        <td>{{notas.notas}}</td>
+    {%empty%}
+        <td>No hay notas registradas</td>
+    </tr>
+    {%endfor %}
+</table>
+{% endblock %}

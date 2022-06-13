@@ -1,0 +1,11 @@
+{% extends 'cuentas/main.html'%}
+{% load static %}
+{% block content %}
+
+<h5>Prueba</h5>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form_n.as_p}}
+    <input class="btn btn-primary" type="submit" name="Submit">
+</form>
+{% endblock %}

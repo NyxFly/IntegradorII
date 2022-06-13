@@ -1,0 +1,45 @@
+{% extends 'cuentas/main.html' %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+  <div class="alert alert-dismissible alert-success">
+    ✔
+    {{message}}
+  </div>
+{% endfor %}
+{% endif %}
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'agregar_curso' %}">Agregar Nuevo Curso</a>
+		</div>
+	</div>
+
+<br>
+<br>
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Nombre</th>
+					<th>Categoria</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+				{% for curso in curso %}
+				<tr>
+				    <td>{{curso.nombre}}</td>
+				    <td>{{curso.categoria}}</td>
+				    <td><a class="btn btn-sm btn-info" href="{% url 'editar_curso' curso.id %}">Editar</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'eliminar_curso' curso.id %}">Eliminar</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

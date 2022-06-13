@@ -1,0 +1,21 @@
+{% extends 'cuentas/main.html'%}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form_c.as_p}}
+                    <hr>
+                <a  class="btn btn-warning" href="{%  url 'cursos' %}">Cancelar</a>
+                <input class="btn btn-primary" type="submit" name="Submit">
+            </form>
+            <br>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'cuentas/main.html' %}
+{% block content %}
+
+<div class="col-md-12">
+    <h5>Alumnos de Emaus</h5>
+    <hr>
+    <div class="card card-body">
+        
+        <table class="table table-sm">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Grado</th>
+                <th>Año</th>
+                <th>Salon</th>
+                <th>Asignar</th>
+            </tr>
+            {% for alumno in alumno %}
+            <tr>
+                <td>{{alumno.nombre }}</td>
+                <td>{{alumno.apellido_p }} {{ alumno.apellido_m }}</td>
+                <td>{{alumno.email }}</td>
+                <td>{{alumno.aula.grado }}</td>
+                <td>{{alumno.aula.año }}</td>
+                <td>{{alumno.aula.salon }}</td>
+                <td><a class="btn btn-sm btn-info" href="{% url 'asignar_alumno' alumno.id %}" >Asignar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div> 
+</div>
+
+{% endblock content %}

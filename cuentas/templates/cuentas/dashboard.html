@@ -1,0 +1,57 @@
+{% extends 'cuentas/main.html'%}
+{% block content %}
+{% include 'cuentas/status.html'%}
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Profesores</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'asignar_profcurso' %}">Establecer Cursos</a>
+			<br>
+			<table class="table table-sm">
+				<tr>
+					<th>Vista</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Celular</th>
+				</tr>
+			{% for profe in  profe %}
+				<tr>
+					<td><a class="btn btn-sm btn-info" href="{% url 'profesor' profe.id %}">View</a></td>
+					<td>{{profe.nombre}}</td>
+					<td>{{profe.apellido_p}} {{profe.apellido_m}}</td>
+					<td>{{profe.celular}}</td>
+				</tr>
+			{% endfor %}	
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Alumnos</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Año</th>
+					<th>Grado</th>
+					<th>Seccion</th>
+					<th>Actualizar</th>
+				</tr>
+				{% for aula in aula %}
+				<tr>
+					<td>{{aula.año}}</td>
+					<td>{{aula.grado}}</td>
+					<td>{{aula.seccion}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'aula' aula.id %}">View</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

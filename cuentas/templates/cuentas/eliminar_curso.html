@@ -1,0 +1,22 @@
+{% extends 'cuentas/main.html'%}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+
+			<p>Esta seguro que quiere eliminar este curso "{{curso}}"?</p>
+
+			<form action="{% url 'eliminar_curso' curso.id %}" method="POST">
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'cursos' %}">Cancel</a>
+				<input class="btn btn-danger" type="submit" name="Confirm" value="Eliminar">
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

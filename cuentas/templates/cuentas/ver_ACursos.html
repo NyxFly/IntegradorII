@@ -1,0 +1,30 @@
+{% extends 'cuentas/main.html' %}
+{% block content %}
+<div class="col-md">
+    <div class="card card-body">
+        <table class="table table-sm">
+            <tr>
+                <th>Grado</th>
+                <th>Curso</th>
+                <th>Profesor</th>
+                <th>Hora Inicio</th>
+                <th>Hora Final</th>
+                <th>Dia</th>
+                <th>Notas</th>
+            </tr>
+            {% for alumno in alumno %}
+            <tr>
+                <td>{{alumno.aula.grado}}</td>
+                <td>{{alumno.curso.nombre}}</td>
+                <td>{{alumno.profesor.nombre}} {{alumno.profesor.apellido_p}} {{alumno.profesor.apellido_m}}</td>
+                <td>{{alumno.horario_i}}</td>
+                <td>{{alumno.horario_f}}</td>
+                <td>{{alumno.dia_semana}}</td>
+                <td><a class="btn btn-sm btn-info" href="{% url 'verA_Notas' request.user.alumno.id alumno.curso.id%}">View</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{{request.user.alumno.id}}
+{% endblock %}

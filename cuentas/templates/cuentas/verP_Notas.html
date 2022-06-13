@@ -1,0 +1,26 @@
+{% extends 'cuentas/main.html'%}
+{% block content %}
+<div class="col-md">
+    <div class="card card-body">
+        <table class="table table-sm">
+            <tr>
+                <th>Trimestre</th>
+                <th>Calificacion</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        {% for alum in alum %}
+            <tr>
+                <td>{{alum.trimeste}}</td>
+                <td>{{alum.notas}}</td>
+                <td><a  class="btn btn-sm btn-info" href="{% url 'editar_nota' alum.id %}">Editar Nota</a></td>
+                <td></td>
+        {%empty%}
+                <td>No hay Notas</td>
+            </tr>
+        {%endfor%}
+        </table>
+    </div>
+</div>
+
+{% endblock%}

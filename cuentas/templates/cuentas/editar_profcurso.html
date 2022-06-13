@@ -1,0 +1,20 @@
+{% extends 'cuentas/main.html'%}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form_pc.as_p}}
+                    <hr>
+                <input class="btn btn-primary" type="submit" name="Submit" value="Actualizar">
+                <a  class="btn btn-warning" href="{%  url 'home' %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'cuentas/main.html'%}
+
+{% block content %}
+<style>
+    .profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+    }
+</style>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+            <h4 style="text-align: center">{{profe.nombre}} {{profe.apellido_p}} {{profe.apellido_m}} </h4>
+            <hr>
+            <img class="profile-pic" src="{{profe.profile_pic.url}}"/>
+			<a  class="btn btn-warning" href="{% url 'home' %}">&#8592; Regresar al Inicio</a>
+        </div>
+	</div>
+
+	
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informacion de Contacto</h5>
+			<hr>
+			<p>Email: {{profe.email}}</p>
+			<p>Celular: {{profe.celular}}</p>
+		</div> 
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total de Cursos</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{total_curso}}</h1>
+		</div>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Grado</th>
+					<th>Año</th>
+					<th>Seccion</th>
+					<th>Aula</th>
+					<th>Curso</th>
+					<th>Horario Inicio</th>
+					<th>Horario Final</th>
+					<th>Dia</th>
+					<th>Actualizar</th>
+					<th>Eliminar</th>
+				</tr>
+				{% for prof_curs in prof_curs %}
+				<tr>
+				    <td>{{prof_curs.aula.grado}}</td>
+					<td>{{prof_curs.aula.año}}</td>
+					<td>{{prof_curs.aula.seccion}}</td>
+					<td>{{prof_curs.aula.salon}}</td>
+					<td>{{prof_curs.curso.nombre}}</td>
+					<td>{{prof_curs.horario_i}}</td>
+					<td>{{prof_curs.horario_f}}</td>
+					<td>{{prof_curs.dia_semana}}</td>
+				    <td><a class="btn btn-sm btn-info" href="{% url 'editar_profcurso' prof_curs.id %}">Actualizar</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'eliminar_profcurso' prof_curs.id %}">Eliminar</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

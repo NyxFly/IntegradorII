@@ -1,0 +1,19 @@
+{% extends 'cuentas/main.html'%}
+{% block content %}
+
+<form action="" method="POST">
+{% csrf_token %}
+{{form.management_form}}
+{% for field in form %}
+    <label>Curso:</label> {{field.curso}} 
+    <hr>
+    <label>Nota:</label> {{field.notas}}
+    <hr>
+    <label>Trimestre:</label>{{field.trimeste}}
+    <hr>
+{% endfor %}
+
+<input class="btn btn-primary" type="submit" name="Submit">
+</form>
+{{pk}}
+{% endblock%}

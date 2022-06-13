@@ -1,0 +1,29 @@
+{% extends 'cuentas/main.html'%}
+{% block content %}
+
+
+<center><h5>Alumnos del Curso de {{curso}} del Salon {{alumno.aula}} </h5></center>
+
+<div class="col-md">
+    <div class="card card-body">
+        <table class="table table-sm">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Agregar</th>
+                <th>Calificaciones</th>
+            </tr>
+         {% for alumno in alumno %}
+            <tr>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.apellido_p}}</td>
+                <td>{{alumno.apellido_m}}</td>
+                <td><a class= "btn btn-sm btn-info" href="{% url 'agregar_nota' alumno.id %}">Agregar Nota</a></td>
+                <td><a class="btn btn-sm btn-info" href="{% url 'verP_Notas' alumno.id pb %}">Ver Notas</a></td>         
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</div>
+{% endblock%}

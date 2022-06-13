@@ -1,0 +1,37 @@
+{% extends 'cuentas/main.html'%}
+{% block content %}
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Grado</th> 
+					<th>Año</th>
+					<th>Seccion</th>
+					<th>Aula</th>
+					<th>Curso</th>
+					<th>Horario Inicio</th>
+					<th>Horario Final</th>
+					<th>Dia</th>
+                    <th>Ver Alumnos</th>
+				</tr>
+				{% for prof_curs in prof_curs %}
+				<tr>
+				    <td>{{prof_curs.aula.grado}}</td>
+					<td>{{prof_curs.aula.año}}</td>
+					<td>{{prof_curs.aula.seccion}}</td>
+					<td>{{prof_curs.aula.salon}}</td>
+					<td>{{prof_curs.curso.nombre}}</td>
+					<td>{{prof_curs.horario_i}}</td>
+					<td>{{prof_curs.horario_f}}</td>
+					<td>{{prof_curs.dia_semana}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'Alumno_porCurso' prof_curs.aula.id prof_curs.curso.id %}">View</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

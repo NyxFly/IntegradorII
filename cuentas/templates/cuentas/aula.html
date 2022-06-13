@@ -1,0 +1,29 @@
+{% extends 'cuentas/main.html' %}
+
+{% block content %}
+<br>
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Alumnos del {{aula.grado}} de {{aula.año}}</h5>
+		</div>
+		<div class="card card-body">
+			<table class="table">
+				<tr>
+					<th>Nombre</th>
+					<th>Email</th>
+					<th>Salon</th>
+				</tr>
+				{% for alumno in alumno %}
+					<tr>
+					<td>{{alumno.nombre}}</td>
+					<td>{{alumno.email}}</td>
+					<td>{{alumno.aula.salon}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}

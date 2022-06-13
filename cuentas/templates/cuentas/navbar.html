@@ -1,0 +1,53 @@
+{% load static %}
+
+<style>
+  .hola-msg {
+
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    margin-right: 20px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="{% url 'home' %}"><img src="{% static 'imagenes/logo-emaus1.png' %}" ></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        {% if user.groups.all.0.name == "admin" %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home'%}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Rol Examenes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'total_alumnos' %}">Estudiantes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cursos' %}">Cursos</a>
+        </li>
+         {% endif %}
+         {% if user.groups.all.0.name == "alumnos" %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'confPerfAlumno' %}">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ver_ACursos' user.alumno.id %}">Cursos</a>
+        </li>
+        {% endif %}
+        {% if user.groups.all.0.name == "profesores" %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'confPerfProfesor' %}">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="{% url 'ver_PCursos' user.profesor.id %}">Mis Cursos</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <span class="hola-msg">Hola   {{request.user.username}} </span>
+    <span ><a class="hola-msg" href="{% url 'logout' %}">Cerrar Sesion</a></span>
+  </nav>
